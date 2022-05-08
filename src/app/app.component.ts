@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import faker from '@faker-js/faker';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'typing';
+  randomText = faker.lorem.sentence();
+  entredText = '';
+  onInput(value: string) {
+    this.entredText = value;
+  }
+  compare(randomLetter: string, entredLetter: string) {
+    return !entredLetter ? 'pending' : randomLetter === entredLetter ? 'correct' : 'incorrect';
+  }
+
 }
